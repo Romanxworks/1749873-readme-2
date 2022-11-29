@@ -8,10 +8,6 @@ import { LoggedUserRdo } from './rdo/logged-user.rdo';
 import { UserRdo } from './rdo/user.rdo';
 
 @ApiTags('auth')
-@ApiResponse({
-    status: HttpStatus.CREATED,
-    description: 'The new user has been successfully created.'
-})
 @Controller('auth')
 export class AuthController {
     constructor(
@@ -19,13 +15,23 @@ export class AuthController {
     ){}
 
     @Post('register')
+    @ApiResponse({
+        status: HttpStatus.CREATED,
+        description: 'The new user has been successfully created.'
+    })
     async create(@Body() dto: CreateUserDto) {
         return fillObject(UserRdo, await this.authService.register(dto));
     }
 
     @Post('login')
     @ApiResponse({
-        type: LoggedUserRdo,
+     type: LoggedUserRdo,
+     status: HttpStatus.OK,
+     description: 'User has been successfully logged.'
+    })
+    @ApiResponse({
+      status: HttpStatus.UNAUTHORIZED,
+      description: 'Password or Login is wrong.',
     })
     async login(@Body() dto: LoginUserDto) {
         return fillObject(LoggedUserRdo, await this.authService.verifyUser(dto));
@@ -34,7 +40,9 @@ export class AuthController {
     @Get(':id')
     @ApiResponse({
         type: UserRdo,
-    })
+        status: HttpStatus.OK,
+        description: 'User found'
+      })
     async show(@Param('id') id: string) {
       return fillObject(UserRdo, await this.authService.getUser(id));
     }

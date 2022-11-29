@@ -16,5 +16,13 @@ Content-Type: application/json
 GET http://localhost:3333/api/comment/321 HTTP/1.1
 Content-Type: application/json
 
+###
+
+
+# Delete comment by id
+
+DELETE  http://localhost:3333/api/comment/7ae4db77-59ad-4faf-805b-47fbb47fd2ba HTTP/1.1
+Content-Type: application/json
+
 
 ###

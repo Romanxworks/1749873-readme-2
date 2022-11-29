@@ -19,6 +19,10 @@ export class CommentMemoryRepository {
 
     }
 
+    public async destroy(id: string): Promise<void> {
+        delete this.repository[id];
+    }
+
     public async findByPostId(postId: string): Promise<CommentInterface[]> {
 
         const commentByPost = Object.values(this.repository)

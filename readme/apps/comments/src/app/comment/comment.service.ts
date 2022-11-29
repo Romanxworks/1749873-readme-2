@@ -21,4 +21,8 @@ export class CommentService {
     async getComments (postId: string){
         return this.commentMemory.findByPostId(postId);
     }
+
+    async delete (id: string){
+        return this.commentMemory.destroy(id);
+    }
 }
