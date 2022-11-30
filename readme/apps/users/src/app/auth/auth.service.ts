@@ -44,8 +44,8 @@ export class AuthService {
         return userEntity.toObject();
       }
     
-      async getUser(id: string) {
+    async getUser(id: string) {
         return this.userMemory.findById(id);
-      }
+    }
     
 }

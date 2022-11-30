@@ -9,4 +9,6 @@ export interface PostInterface{
     isRepost: boolean;
     primaryId: string;
     primaryAuthor: string;
+    likesCount: number;
+    repostsCount: number;
 }
