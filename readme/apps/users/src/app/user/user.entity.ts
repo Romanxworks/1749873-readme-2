@@ -8,12 +8,14 @@ export class UserEntity implements UserInterface {
     public name: string;
     public avatar: string;
     public passwordHash: string;
+    public subscription: string[];
     public likes: string[];
     public posts: string[];
 
     constructor(user: UserInterface) {
         this.fillEntity(user);
      }
+    
 
     public toObject() {
         return {...this};
@@ -36,6 +38,7 @@ export class UserEntity implements UserInterface {
         this.avatar = user.avatar;
         this.likes = user.likes;
         this.posts = user.posts;
+        this.subscription = user.subscription;
         this.passwordHash = user.passwordHash;
 
     }

@@ -1,7 +1,7 @@
 import { PostInterface } from './post.interface';
 
 export interface PostCitationInterface extends PostInterface{
-    content: string;
+    citation: string;
     author: string;
     
 }

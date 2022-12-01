@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {CRUDRepositoryInterface} from '@readme/core'
+import {CRUDRepositoryInterface} from '@readme/core';
 import { UserInterface } from '@readme/shared-types';
 import { UserEntity } from './user.entity';
 import * as crypto from 'crypto';

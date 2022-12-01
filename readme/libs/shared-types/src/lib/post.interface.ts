@@ -6,9 +6,11 @@ export interface PostInterface{
     date: Date;
     state: PostState;
     tags: string[];
+    images: string[];
     isRepost: boolean;
     primaryId: string;
     primaryAuthor: string;
     likesCount: number;
     repostsCount: number;
+    commentCount: number;
 }

@@ -13,7 +13,7 @@ export class AuthService {
 
     async register (dto: CreateUserDto) {
         const {email, name, password} = dto;
-        const user = {_id:'', email, name, passwordHash: '', avatar: '', likes: [], posts: []};
+        const user = {_id:'', email, name, passwordHash: '', avatar: '', likes: [], posts: [], subscription: []};
 
         const existUser = await this.userMemory
         .findByEmail(email);

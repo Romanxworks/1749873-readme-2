@@ -1,5 +1,5 @@
 import { PostInterface } from './post.interface';
 
-export interface PostFotoInterface extends PostInterface{
+export interface PostImageInterface extends PostInterface{
     image: string;
 }
