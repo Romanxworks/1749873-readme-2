@@ -1,10 +1,9 @@
 import { Module } from '@nestjs/common';
-import { PostImageModule } from './post-image/post-image.module';
 import { PostModule } from './post/post.module';
 
 
 @Module({
-  imports: [PostModule, PostImageModule],
+  imports: [PostModule],
   controllers: [],
   providers: [],
 })
