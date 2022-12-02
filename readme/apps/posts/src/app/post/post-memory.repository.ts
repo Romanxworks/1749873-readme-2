@@ -30,7 +30,7 @@ export class PostMemoryRepository implements CRUDRepositoryInterface<PostEntity,
         delete this.repository[id];
     }
 
-    public async show(): Promise< PostInterface[]> {
+    public async getPosts(): Promise<PostInterface[]> {
        return Object.values(this.repository);
     }
 

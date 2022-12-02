@@ -8,6 +8,7 @@ import { CreatePostTextDto } from './dto/create-post-text.dto';
 import { CreatePostVideoDto } from './dto/create-post-video.dto';
 import { CreatePostReferenceDto } from './dto/create-post-reference.dto';
 import { CreatePostCitationDto } from './dto/create-post-citation.dto';
+import { POST_NOT_FOUND } from './post.constant';
 // import { UpdatePostDto } from './dto/update-post.dto';
 
 @Injectable()
@@ -18,7 +19,7 @@ export class PostService {
 
 
     async getPosts () {
-        return this.postMemory.show();
+        return this.postMemory.getPosts();
     }
 
     async createImage(dto: CreatePostImageDto){
@@ -177,14 +178,31 @@ export class PostService {
     }
 
     async getPost(id: string){
-        return this.postMemory.findById(id);
+        const existPost = this.postMemory.findById(id); 
+
+        if (!existPost) {
+            throw new Error(POST_NOT_FOUND);
+        }
+
+        return existPost;
     }
 
     async updatePost(id: string, dto: PostEntity){
+        const existPost = this.postMemory.findById(id); 
+
+        if (!existPost) {
+            throw new Error(POST_NOT_FOUND);
+        }
+        
         return this.postMemory.update(id, dto);
     }
 
     async deletePost(id: string){
+        const existPost = this.postMemory.findById(id); 
+
+        if (!existPost) {
+            throw new Error(POST_NOT_FOUND);
+        }
         return this.postMemory.destroy(id);
     }
 
@@ -193,6 +211,11 @@ export class PostService {
     }
 
     async repost(userId: string, postId: string){
+        const existPost = this.postMemory.findById(postId); 
+
+        if (!existPost) {
+            throw new Error(POST_NOT_FOUND);
+        }
         return this.postMemory.repost(userId, postId);
     }
 }
