@@ -9,7 +9,7 @@ import { CreatePostVideoDto } from './dto/create-post-video.dto';
 import { CreatePostReferenceDto } from './dto/create-post-reference.dto';
 import { CreatePostCitationDto } from './dto/create-post-citation.dto';
 import { POST_NOT_FOUND } from './post.constant';
-// import { UpdatePostDto } from './dto/update-post.dto';
+import { UpdatePostDto } from './dto/update-post.dto';
 
 @Injectable()
 export class PostService {
@@ -187,14 +187,15 @@ export class PostService {
         return existPost;
     }
 
-    async updatePost(id: string, dto: PostEntity){
-        const existPost = this.postMemory.findById(id); 
-
-        if (!existPost) {
-            throw new Error(POST_NOT_FOUND);
-        }
-        
-        return this.postMemory.update(id, dto);
+    async updatePost(id: string, dto: UpdatePostDto){
+        const existPost = await this.postMemory.findById(id); 
+        console.log(existPost);
+        const updatedPost = Object.assign(existPost, dto);
+        // if (!existPost) {
+        //     throw new Error(POST_NOT_FOUND);
+        // }
+        console .log(updatedPost);
+        return this.postMemory.update(id, updatedPost);
     }
 
     async deletePost(id: string){

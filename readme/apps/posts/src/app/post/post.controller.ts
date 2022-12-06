@@ -7,7 +7,7 @@ import { CreatePostReferenceDto } from './dto/create-post-reference.dto';
 import { CreatePostTextDto } from './dto/create-post-text.dto';
 import { CreatePostVideoDto } from './dto/create-post-video.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
-import { PostEntity } from './post.entity';
+// import { PostEntity } from './post.entity';
 import { PostService } from './post.service';
 import { PostRdo } from './rdo/post.rdo';
 @ApiTags('post')
@@ -53,7 +53,7 @@ export class PostController {
       status: HttpStatus.CREATED,
       description: 'Post'
     })
-    async updatePost (@Param('id') id: string, @Body() dto: PostEntity){
+    async updatePost (@Param('id') id: string, @Body() dto: UpdatePostDto){
       return fillObject(PostRdo, await this.postService.updatePost(id, dto));
     }
 

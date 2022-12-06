@@ -1,4 +1,4 @@
-import { PostState } from '@readme/shared-types';
+import { PostState, PostType } from '@readme/shared-types';
 
 export class UpdatePostDto {
     public userId?: string;
@@ -14,4 +14,13 @@ export class UpdatePostDto {
     public image?: string;
     public citation?: string;
     public author?: string;
+    public date?: Date;
+    public isRepost?: boolean;
+    public primaryId?: string;
+    public primaryAuthor?: string;
+    public likesCount?: number;
+    public repostsCount?: number;
+    public commentCount?: number;
+    public type?: PostType;
+    public linkVideo?: string;
 }

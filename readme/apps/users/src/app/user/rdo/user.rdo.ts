@@ -10,6 +10,13 @@ export class UserRdo {
 public id: string;
 
 @ApiProperty({
+    description: 'User registered date(ISO format)',
+    example: '2021-03-09'
+})
+@Expose()
+public date: string;
+
+@ApiProperty({
     description: 'User address',
     example: 'myEmail@mail.ru'
 })
@@ -35,5 +42,8 @@ public likes: string[];
 
 @Expose()
 public posts: string[];
+
+@Expose()
+public subscriptions: string[];
 
 }

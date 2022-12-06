@@ -4,11 +4,12 @@ import {SALT_ROUNDS} from './user.constant';
 
 export class UserEntity implements UserInterface {
     public _id: string;
+    public date: Date;
     public email: string;
     public name: string;
     public avatar: string;
     public passwordHash: string;
-    public subscription: string[];
+    public subscriptions: string[];
     public likes: string[];
     public posts: string[];
 
@@ -33,12 +34,13 @@ export class UserEntity implements UserInterface {
 
     public fillEntity(user: UserInterface) {
         this._id = user._id;
+        this.date = user.date;
         this.email = user.email;
         this.name = user.name;
         this.avatar = user.avatar;
         this.likes = user.likes;
         this.posts = user.posts;
-        this.subscription = user.subscription;
+        this.subscriptions = user.subscriptions;
         this.passwordHash = user.passwordHash;
 
     }

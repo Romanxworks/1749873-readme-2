@@ -1,11 +1,12 @@
-import { Body, Controller, Get, HttpStatus, Param, Post } from '@nestjs/common';
+import { Body, Controller, HttpStatus,Post } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { fillObject } from '@readme/core';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
+import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 import { LoggedUserRdo } from './rdo/logged-user.rdo';
-import { UserRdo } from './rdo/user.rdo';
+import { UserRdo } from '../user/rdo/user.rdo';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -37,14 +38,19 @@ export class AuthController {
         return fillObject(LoggedUserRdo, await this.authService.verifyUser(dto));
     }
 
-    @Get(':id')
+    @Post('password')
     @ApiResponse({
-        type: UserRdo,
-        status: HttpStatus.OK,
-        description: 'User found'
-      })
-    async show(@Param('id') id: string) {
-      return fillObject(UserRdo, await this.authService.getUser(id));
+     type: LoggedUserRdo,
+     status: HttpStatus.OK,
+     description: 'User has been successfully logged.'
+    })
+    @ApiResponse({
+      status: HttpStatus.UNAUTHORIZED,
+      description: 'Password and New Password matches.',
+    })
+    async setNewPassword(@Body() dto: UpdateUserPasswordDto) {
+        return fillObject(LoggedUserRdo, await this.authService.updateUserPassword(dto));
     }
+
 
 }

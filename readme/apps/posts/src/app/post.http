@@ -28,11 +28,11 @@ Content-Type: application/json
 
 # Update post by id
 
-PATCH  http://localhost:3333/api/post/6c8a0aa7-c39d-4998-a8b8-7fe2109af2f3 HTTP/1.1
+PATCH  http://localhost:3333/api/post/b96e45ff-5ee8-4f38-9cef-de75190ad74a HTTP/1.1
 Content-Type: application/json
 
 {
-    "tags": ["Romanqee"]
+    "tagse": ["Romanqee"]
 }
 
 ###
