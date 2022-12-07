@@ -9,57 +9,59 @@ export class UserService {
         private readonly userMemory: UserMemoryRepository
     ){}
 
-    async addDeletePost(userId: string, postId: string, type: string) {
+    async addDeletePost(userId: string, postId: string, isAdd: boolean) {
       const existUser = await this.userMemory.findById(userId);
-      const isAdd = Boolean(Number(type));
   
-      console.log(isAdd);
       if (!existUser) {
         throw new Error(AUTH_USER_NOT_FOUND);
       }
-      const posts = existUser.posts;
-      const srtpost = String(postId);
+      
       if(isAdd){
         existUser.posts.push(postId);
-      }else{
-        // console.log(typeof postId);
-        // console.log(existUser.posts[0] === postId);
-        existUser.posts.filter((postsId) => postsId !== srtpost);
-        posts.filter((postsId) => postsId !== srtpost);
-        console.log(existUser);
+        const userEntity = new UserEntity(existUser);
+        return this.userMemory.update(existUser._id, userEntity);
       }
 
-      
-      const userEntity = new UserEntity(existUser);
-      
+      const User = {...existUser, posts:existUser.posts.filter((postsId) => postsId !== postId)};
+      const userEntity = new UserEntity(User);
       return this.userMemory.update(existUser._id, userEntity);
 
     }
 
-    async addDeleteLike(userId: string, postId: string) {
+    async addDeleteLike(userId: string, postId: string, isAdd: boolean) {
         const existUser = await this.userMemory.findById(userId);
     
         if (!existUser) {
           throw new Error(AUTH_USER_NOT_FOUND);
         }
+
+        if(isAdd){
+          existUser.likes.push(postId);
+          const userEntity = new UserEntity(existUser);
+          return this.userMemory.update(existUser._id, userEntity);
+        }
   
-        existUser.likes.push(postId);
-        const userEntity = new UserEntity(existUser);
-        
+        const User = {...existUser, likes:existUser.likes.filter((postsId) => postsId !== postId)};
+        const userEntity = new UserEntity(User);
         return this.userMemory.update(existUser._id, userEntity);
   
     }
 
-    async addDeleteSubscribe(userId: string, subscribeId: string) {
+    async addDeleteSubscribe(userId: string, subscribeId: string, isAdd) {
         const existUser = await this.userMemory.findById(userId);
     
         if (!existUser) {
           throw new Error(AUTH_USER_NOT_FOUND);
         }
+
+        if(isAdd){
+          existUser.subscriptions.push(subscribeId);
+          const userEntity = new UserEntity(existUser);
+          return this.userMemory.update(existUser._id, userEntity);
+        }
   
-        existUser.subscriptions.push(subscribeId);
-        const userEntity = new UserEntity(existUser);
-        
+        const User = {...existUser, subscriptions: existUser.subscriptions.filter((userId) => userId !== subscribeId)};
+        const userEntity = new UserEntity(User);
         return this.userMemory.update(existUser._id, userEntity);
   
     }

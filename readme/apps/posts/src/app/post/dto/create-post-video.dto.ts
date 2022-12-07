@@ -6,7 +6,6 @@ export class CreatePostVideoDto {
         required: true,
         example: '1e3r4t45'
     })
-
     public userId: string;
 
     @ApiProperty({

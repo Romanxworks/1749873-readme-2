@@ -189,13 +189,12 @@ export class PostService {
 
     async updatePost(id: string, dto: UpdatePostDto){
         const existPost = await this.postMemory.findById(id); 
-        console.log(existPost);
         const updatedPost = Object.assign(existPost, dto);
-        // if (!existPost) {
-        //     throw new Error(POST_NOT_FOUND);
-        // }
-        console .log(updatedPost);
-        return this.postMemory.update(id, updatedPost);
+        if (!existPost) {
+            throw new Error(POST_NOT_FOUND);
+        }
+        const post = new PostEntity(updatedPost);
+        return this.postMemory.update(id, post);
     }
 
     async deletePost(id: string){

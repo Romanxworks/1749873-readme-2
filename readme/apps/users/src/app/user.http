@@ -26,7 +26,7 @@ Content-Type: application/json
 
 # Get User
 
-GET http://localhost:3333/api/users/ff550fb6-19a8-4747-a477-652607950e42 HTTP/1.1
+GET http://localhost:3333/api/users/b0c10e0c-1426-4244-8841-4fe730ddbb41 HTTP/1.1
 Content-Type: application/json
 
 
@@ -60,13 +60,40 @@ Content-Type: application/json
 
 ###
 
+# add post
 
-PATCH   http://localhost:3333/api/users/post/1234567 HTTP/1.1
+PATCH   http://localhost:3333/api/users/post/124567 HTTP/1.1
 Content-Type: application/json
 
 {
-    "userId": "f354b92f-bc3e-4715-a822-ff2f5b2ae806",
-    "type": "0"
+    "userId": "b0c10e0c-1426-4244-8841-4fe730ddbb41",
+    "isAdd": "1"
+
+}
+
+###
+
+# add like
+
+PATCH   http://localhost:3333/api/users/like/1245637 HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId": "b0c10e0c-1426-4244-8841-4fe730ddbb41",
+    "isAdd": "1"
+
+}
+
+###
+
+# add subscribe
+
+PATCH   http://localhost:3333/api/users/subscribe/124567 HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId": "b0c10e0c-1426-4244-8841-4fe730ddbb41",
+    "isAdd": "0"
 
 }
 

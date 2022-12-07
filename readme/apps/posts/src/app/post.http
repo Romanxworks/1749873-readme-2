@@ -28,11 +28,11 @@ Content-Type: application/json
 
 # Update post by id
 
-PATCH  http://localhost:3333/api/post/b96e45ff-5ee8-4f38-9cef-de75190ad74a HTTP/1.1
+PATCH  http://localhost:3333/api/post/162a4756-5a60-461a-9e12-0ada6b0fb717 HTTP/1.1
 Content-Type: application/json
 
 {
-    "tagse": ["Romanqee"]
+    "images": ["Romanqee"]
 }
 
 ###
@@ -110,7 +110,7 @@ Content-Type: application/json
 
 # repost post
 
-POST http://localhost:3333/api/post/repost/c1bbe309-db27-40c4-9c4a-1ba939deabb4  HTTP/1.1
+POST http://localhost:3333/api/post/repost/1554a054-dd0b-406a-be4f-f0f1cf1b6f72  HTTP/1.1
 Content-Type: application/json
 
 {

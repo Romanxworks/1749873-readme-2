@@ -33,13 +33,14 @@ export class PostRdo {
 
     @ApiProperty({
         description: 'tags',
-        example: '#tags'
+        example: ['#tags']
     })
     @Expose()
     public tags: string[];
+
     @ApiProperty({
         description: 'images',
-        example: '/test-image.jpg'
+        example: ['/test-image.jpg']
     })
     @Expose()
     public images: string[];

@@ -10,7 +10,7 @@ export class CreatePostReferenceDto {
 
     @ApiProperty({
         description: 'tags',
-        example: '[#tags]'
+        example: ['#tags']
     })
     public tags: string[];
 
