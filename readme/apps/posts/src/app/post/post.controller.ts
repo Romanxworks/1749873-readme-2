@@ -73,8 +73,8 @@ export class PostController {
       status: HttpStatus.CREATED,
       description: 'Post has been repost'
     })
-    async repost (@Body() dto:UpdatePostDto, @Param('id') postId: string){
-      return fillObject(PostRdo, await this.postService.repost(dto.userId, postId));
+    async repost (@Body() {userId}:{userId:string}, @Param('id') postId: string){
+      return fillObject(PostRdo, await this.postService.repost(userId, postId));
     }
 
     @Post('image')
