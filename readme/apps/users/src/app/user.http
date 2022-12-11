@@ -1,0 +1,100 @@
+# Create User
+
+POST http://localhost:3333/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "romkaq@test3.ru",
+    "name": "Romanq",
+    "password": "123456q"
+
+}
+
+###
+
+# Login User
+
+POST http://localhost:3333/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "romkaq@test.ru",
+    "password": "123456s"
+}
+
+###
+
+# Get User
+
+GET http://localhost:3333/api/users/b0c10e0c-1426-4244-8841-4fe730ddbb41 HTTP/1.1
+Content-Type: application/json
+
+
+###
+
+# Update User password
+
+POST http://localhost:3333/api/auth/password HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "romkaq@test.ru",
+    "password": "123456q",
+    "newPassword": "123456s"
+
+}
+
+###
+
+# Update User password
+
+POST  http://localhost:3333/api/auth/password HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "romkaq@test.ru",
+    "password": "123456q",
+    "newPassword": "123456s"
+
+}
+
+###
+
+# add post
+
+PATCH   http://localhost:3333/api/users/post/124567 HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId": "b0c10e0c-1426-4244-8841-4fe730ddbb41",
+    "isAdd": "1"
+
+}
+
+###
+
+# add like
+
+PATCH   http://localhost:3333/api/users/like/1245637 HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId": "b0c10e0c-1426-4244-8841-4fe730ddbb41",
+    "isAdd": "1"
+
+}
+
+###
+
+# add subscribe
+
+PATCH   http://localhost:3333/api/users/subscribe/124567 HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId": "b0c10e0c-1426-4244-8841-4fe730ddbb41",
+    "isAdd": "0"
+
+}
+
+###
