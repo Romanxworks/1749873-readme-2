@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
+// import { ConfigService, ConfigType } from '@nestjs/config';Inject,
 import * as dayjs from 'dayjs';
+// import databaseConfig from '../../config/database.config';
 import { UserMemoryRepository } from '../user/user-memory.repository';
 import { UserEntity } from '../user/user.entity';
 import { AUTH_USER_EXISTS, AUTH_USER_NEW_PASSWORD_WRONG, AUTH_USER_NOT_FOUND, AUTH_USER_PASSWORD_WRONG } from './auth.constant';
@@ -10,8 +12,13 @@ import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
 @Injectable()
 export class AuthService {
     constructor (
-        private readonly userMemory: UserMemoryRepository
-    ) {}
+        private readonly userMemory: UserMemoryRepository,
+
+    // @Inject(databaseConfig.KEY)
+    // private readonly mongoConfig: ConfigType<typeof databaseConfig>,
+    ) {
+      // console.log(mongoConfig.password);
+    }
 
     async register (dto: CreateUserDto) {
         const {email, name, password} = dto;
