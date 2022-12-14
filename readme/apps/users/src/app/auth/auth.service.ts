@@ -1,10 +1,8 @@
 import { Injectable } from '@nestjs/common';
-// import { ConfigService, ConfigType } from '@nestjs/config';Inject,
 import * as dayjs from 'dayjs';
-// import databaseConfig from '../../config/database.config';
 import { UserMemoryRepository } from '../user/user-memory.repository';
 import { UserEntity } from '../user/user.entity';
-import { AUTH_USER_EXISTS, AUTH_USER_NEW_PASSWORD_WRONG, AUTH_USER_NOT_FOUND, AUTH_USER_PASSWORD_WRONG } from './auth.constant';
+import { AuthUserMessage } from './auth.constant';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { UpdateUserPasswordDto } from './dto/update-user-password.dto';
@@ -27,7 +25,7 @@ export class AuthService {
         const existUser = await this.userMemory
         .findByEmail(email);
         if (existUser) {
-        throw new Error(AUTH_USER_EXISTS);
+        throw new Error(AuthUserMessage.AuthUserExists);
         }
 
         const userEntity = await new UserEntity(user)
@@ -42,12 +40,12 @@ export class AuthService {
         const existUser = await this.userMemory.findByEmail(email);
     
         if (!existUser) {
-          throw new Error(AUTH_USER_NOT_FOUND);
+          throw new Error(AuthUserMessage.AuthUserNotFound);
         }
     
         const userEntity = new UserEntity(existUser);
         if (! await userEntity.comparePassword(password)) {
-          throw new Error(AUTH_USER_PASSWORD_WRONG);
+          throw new Error(AuthUserMessage.AuthUserPasswordWrong);
         }
     
         return userEntity.toObject();
@@ -59,16 +57,16 @@ export class AuthService {
       const existUser = await this.userMemory.findByEmail(email);
   
       if (!existUser) {
-        throw new Error(AUTH_USER_NOT_FOUND);
+        throw new Error(AuthUserMessage.AuthUserNotFound);
       }
   
       const userEntity = new UserEntity(existUser);
       if (! await userEntity.comparePassword(password)) {
-        throw new Error(AUTH_USER_PASSWORD_WRONG);
+        throw new Error(AuthUserMessage.AuthUserPasswordWrong);
       }
 
       if (await userEntity.comparePassword(newPassword)) {
-        throw new Error(AUTH_USER_NEW_PASSWORD_WRONG);
+        throw new Error(AuthUserMessage.AuthUserNewPasswordWrong);
       }
 
       await userEntity.setPassword(newPassword);
