@@ -15,7 +15,7 @@ export class AuthService {
 
     async register (dto: CreateUserDto) {
         const {email, name, password} = dto;
-        const user = {_id:'', email, name, passwordHash: '', avatar: '', likes: [], posts: [], subscriptions: [], date: dayjs().toDate(),};
+        const user = {email, name, passwordHash: '', avatar: '', likes: [], posts: [], subscriptions: [], date: dayjs().toDate(),};
 
         const existUser = await this.userMemory
         .findByEmail(email);
