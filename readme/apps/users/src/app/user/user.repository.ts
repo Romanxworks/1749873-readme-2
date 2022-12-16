@@ -13,17 +13,17 @@ export class UserRepository implements CRUDRepositoryInterface<UserEntity, strin
   }
 
   public async create(item: UserEntity): Promise<UserInterface> {
-    const newBlogUser = new this.userModel(item);
-    return newBlogUser.save();
+    const newUser = new this.userModel(item);
+    return newUser.save();
   }
 
   public async destroy(id: string): Promise<void> {
-    this.userModel.deleteOne({id});
+    this.userModel.findByIdAndDelete({id});
   }
 
   public async findById(id: string): Promise<UserInterface | null> {
     return this.userModel
-      .findOne({id})
+      .findOne({_id:id})
       .exec();
   }
 

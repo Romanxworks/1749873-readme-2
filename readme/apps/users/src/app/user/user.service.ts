@@ -47,7 +47,7 @@ export class UserService {
   
     }
 
-    async addDeleteSubscribe(userId: string, subscribeId: string, isAdd) {
+    async addDeleteSubscribe(userId: string, subscribeId: string, isAdd: boolean) {
         const existUser = await this.userMemory.findById(userId);
     
         if (!existUser) {
@@ -67,6 +67,12 @@ export class UserService {
     }
 
     async getUser(id: string) {
+      const existUser = await this.userMemory.findById(id);
+  
+      if (!existUser) {
+        throw new Error(AuthUserMessage.AuthUserNotFound);
+      }
+      
         return this.userMemory.findById(id);
     }
 }
