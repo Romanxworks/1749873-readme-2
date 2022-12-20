@@ -1,19 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import { AUTH_USER_NOT_FOUND } from '../auth/auth.constant';
-import { UserMemoryRepository } from './user-memory.repository';
+import { AuthUserMessage } from '../auth/auth.constant';
 import { UserEntity } from './user.entity';
+import { UserRepository } from './user.repository';
 
 @Injectable()
 export class UserService {
     constructor(
-        private readonly userMemory: UserMemoryRepository
+        private readonly userMemory: UserRepository
     ){}
 
     async addDeletePost(userId: string, postId: string, isAdd: boolean) {
       const existUser = await this.userMemory.findById(userId);
   
       if (!existUser) {
-        throw new Error(AUTH_USER_NOT_FOUND);
+        throw new Error(AuthUserMessage.AuthUserNotFound);
       }
       
       if(isAdd){
@@ -32,7 +32,7 @@ export class UserService {
         const existUser = await this.userMemory.findById(userId);
     
         if (!existUser) {
-          throw new Error(AUTH_USER_NOT_FOUND);
+          throw new Error(AuthUserMessage.AuthUserNotFound);
         }
 
         if(isAdd){
@@ -47,11 +47,11 @@ export class UserService {
   
     }
 
-    async addDeleteSubscribe(userId: string, subscribeId: string, isAdd) {
+    async addDeleteSubscribe(userId: string, subscribeId: string, isAdd: boolean) {
         const existUser = await this.userMemory.findById(userId);
     
         if (!existUser) {
-          throw new Error(AUTH_USER_NOT_FOUND);
+          throw new Error(AuthUserMessage.AuthUserNotFound);
         }
 
         if(isAdd){
@@ -67,6 +67,12 @@ export class UserService {
     }
 
     async getUser(id: string) {
+      const existUser = await this.userMemory.findById(id);
+  
+      if (!existUser) {
+        throw new Error(AuthUserMessage.AuthUserNotFound);
+      }
+      
         return this.userMemory.findById(id);
     }
 }

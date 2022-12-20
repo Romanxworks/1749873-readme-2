@@ -18,15 +18,15 @@ POST http://localhost:3333/api/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "romkaq@test.ru",
-    "password": "123456s"
+    "email": "romkaq@test3.ru",
+    "password": "123456q"
 }
 
 ###
 
 # Get User
 
-GET http://localhost:3333/api/users/b0c10e0c-1426-4244-8841-4fe730ddbb41 HTTP/1.1
+GET http://localhost:3333/api/users/639b02dfc84f60e0c0e131d7 HTTP/1.1
 Content-Type: application/json
 
 
@@ -38,7 +38,7 @@ POST http://localhost:3333/api/auth/password HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "romkaq@test.ru",
+    "email": "romkaq@test3.ru",
     "password": "123456q",
     "newPassword": "123456s"
 
@@ -66,8 +66,8 @@ PATCH   http://localhost:3333/api/users/post/124567 HTTP/1.1
 Content-Type: application/json
 
 {
-    "userId": "b0c10e0c-1426-4244-8841-4fe730ddbb41",
-    "isAdd": "1"
+    "userId": "639b0429c84f60e0c0e131dc",
+    "isAdd": "0"
 
 }
 
