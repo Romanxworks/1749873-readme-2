@@ -3,6 +3,7 @@ services:
   postgres:
     image: postgres:14-alpine
     container_name: postgres
+    user: root
     environment:
       POSTGRES_USER: "admin"
       POSTGRES_PASSWORD: "test"
@@ -10,7 +11,7 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: [ "CMD", "pg_isready -U admin -d test" ]
+      test: [ "CMD-SHELL", "pg_isready -U admin -d test" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -23,6 +24,7 @@ services:
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
+    user: root
     environment:
       PGADMIN_DEFAULT_EMAIL: "roman@home.local"
       PGADMIN_DEFAULT_PASSWORD: "test"
