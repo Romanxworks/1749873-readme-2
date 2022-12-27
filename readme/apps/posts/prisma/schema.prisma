@@ -14,26 +14,26 @@ datasource db {
 model Post {
  id             Int @id @default(autoincrement())
  userId         String
- state          String
- title          String
+ state          String @default("draft")
+ title          String? @default("")
  tags           Tag[]
  comments       Comment[]
- images         String[]
- isRepost       Boolean
- primaryId      Int
- primaryAuthor  String
- likesCount     Int
- repostsCount   Int
- commentCount   Int
- type           String
- citation       String
- author         String
- image          String
- reference      String
- description    String
- preview        String
- linkVideo      String
- content        String
+ images         String[] @default([])
+ isRepost       Boolean @default(false)
+ primaryId      Int @default(0)
+ primaryAuthor  String @default("")
+ likesCount     Int @default(0)
+ repostsCount   Int @default(0)
+ commentCount   Int @default(0)
+ type           String @default("citation")
+ citation       String? @default("")
+ author         String? @default("")
+ image          String? @default("")
+ reference      String? @default("")
+ description    String? @default("")
+ preview        String? @default("")
+ linkVideo      String? @default("")
+ content        String? @default("")
  createdAt      DateTime @default(now())
  publishAt      DateTime @default(now())
 }

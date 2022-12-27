@@ -39,6 +39,13 @@ export class PostRdo {
     public tags: string[];
 
     @ApiProperty({
+        description: 'comments',
+        example: ['commentId']
+    })
+    @Expose()
+    public comments: string[]
+
+    @ApiProperty({
         description: 'images',
         example: ['/test-image.jpg']
     })

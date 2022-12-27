@@ -7,6 +7,7 @@ export interface PostInterface{
     date: Date;
     state: PostState;
     tags: string[];
+    comments: string[];
     images: string[];
     isRepost: boolean;
     primaryId: string;

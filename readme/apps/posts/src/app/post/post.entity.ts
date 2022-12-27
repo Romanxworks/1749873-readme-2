@@ -6,6 +6,7 @@ export class PostEntity implements PostInterface {
     public date: Date;
     public state: PostState;
     public tags: string[];
+    public comments: string[];
     public images: string[];
     public isRepost: boolean;
     public primaryId: string;
@@ -30,6 +31,7 @@ export class PostEntity implements PostInterface {
     }
 
 
+
     public toObject(){
         return {...this};
     }
@@ -41,6 +43,7 @@ export class PostEntity implements PostInterface {
         this.state = post.state;
         this.isRepost = post.isRepost;
         this.tags = post.tags;
+        this.comments = post.comments;
         this.images = post.images;
         this.primaryId = post.primaryId;
         this.primaryAuthor = post.primaryAuthor;
