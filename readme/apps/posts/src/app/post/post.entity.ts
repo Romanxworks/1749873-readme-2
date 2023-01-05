@@ -1,12 +1,12 @@
-import {PostInterface, PostState, PostType} from '@readme/shared-types';
+import {PostInterface, PostState, PostType, CommentInterface, TagsInterface} from '@readme/shared-types';
 
 export class PostEntity implements PostInterface {
     public id: string;
     public userId: string;
     public date: Date;
     public state: PostState;
-    public tags: string[];
-    public comments: string[];
+    public tags: TagsInterface[];
+    public comments: CommentInterface[];
     public images: string[];
     public isRepost: boolean;
     public primaryId: string;
@@ -42,14 +42,14 @@ export class PostEntity implements PostInterface {
         this.date = post.date;
         this.state = post.state;
         this.isRepost = post.isRepost;
-        this.tags = post.tags;
-        this.comments = post.comments;
+        this.tags = [...post.tags];
+        this.comments = [];
         this.images = post.images;
         this.primaryId = post.primaryId;
         this.primaryAuthor = post.primaryAuthor;
-        this.likesCount = post.likesCount;
-        this.repostsCount = post.repostsCount;
-        this.commentCount = post.commentCount;
+        this.likesCount = 0;
+        this.repostsCount = 0;
+        this.commentCount = 0;
         this.type = post.type; 
         this.citation = post.citation;
         this.author = post.author;

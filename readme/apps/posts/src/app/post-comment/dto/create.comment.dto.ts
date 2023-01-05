@@ -17,6 +17,6 @@ export class CreateCommentDto {
         description: 'id post',
         example: '1233654'
       })
-    public postId: string;
+    public postId: number;
 
 }

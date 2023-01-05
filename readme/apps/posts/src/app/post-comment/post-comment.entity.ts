@@ -1,11 +1,10 @@
 import {CommentInterface} from '@readme/shared-types';
 
-export class CommentEntity implements CommentInterface {
-    public id: string;
-    public date: Date;
+export class PostCommentEntity implements CommentInterface {
+    public id: number;
     public content: string;
     public userId: string;
-    public postId: string;
+    public postId: number;
 
     constructor(comment: CommentInterface) {
         this.fillEntity(comment);
@@ -17,11 +16,9 @@ export class CommentEntity implements CommentInterface {
 
     public fillEntity(comment: CommentInterface) {
         this.id = comment.id;
-        this.date = comment.date;
         this.content = comment.content;
         this.userId = comment.userId;
         this.postId = comment.postId;
 
     }
-
 }

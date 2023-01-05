@@ -1,13 +1,15 @@
 import { PostState } from './post-state.enum';
 import { PostType} from './post-type.enum';
+import { TagsInterface } from './tags.interface';
+import { CommentInterface } from './comment.interface';
 
 export interface PostInterface{
-    id: string;
+    id?: string;
     userId: string;
     date: Date;
     state: PostState;
-    tags: string[];
-    comments: string[];
+    tags: TagsInterface[];
+    comments: CommentInterface[];
     images: string[];
     isRepost: boolean;
     primaryId: string;

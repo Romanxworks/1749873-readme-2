@@ -8,7 +8,7 @@ export class CommentRdo {
     public id: string;
 
     @ApiProperty()
-    @Expose()
+    @Expose({name: 'createdAt'})
     public date: Date;
 
     @ApiProperty()

@@ -6,5 +6,6 @@ import { PostTagService } from './post-tag.service';
     imports: [],
     controllers: [],
     providers: [PostTagService, PostTagRepository],
-    exports: [PostTagRepository],})
+    exports: [PostTagRepository],
+})
 export class PostTagModule {}
