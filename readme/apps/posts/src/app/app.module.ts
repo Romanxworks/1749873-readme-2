@@ -5,7 +5,7 @@ import { PostCommentModule } from './post-comment/post-comment.module';
 import { PostTagModule } from './post-tag/post-tag.module';
 
 @Module({
-  imports: [PostModule, PrismaModule, PostCommentModule, PostTagModule],
+  imports: [PrismaModule, PostModule, PostCommentModule, PostTagModule],
   controllers: [],
   providers: [],
 })

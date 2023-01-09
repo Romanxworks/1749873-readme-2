@@ -14,22 +14,8 @@ async function fillDb() {
             citation: 'Чем умнее человек, тем легче он признает себя дураком',
             userId: '13',
             author: 'Альберт Эйнштейн',
-            state: 'published',
             images: [],
-            isRepost: false,
-            primaryId: 0,
-            primaryAuthor: '',
-            likesCount: 0,
-            repostsCount: 0,
-            commentCount: 0,
             type: 'citation',
-            image: '',
-            reference: '',
-            description: '',
-            title: '',
-            preview: '',
-            content: '',
-            linkVideo: ''
           },
         ]
       },
@@ -45,23 +31,8 @@ async function fillDb() {
           {
             image: './images/imageTest.jpg',
             userId: '131',
-            citation: '',
-            author: '',
-            state: 'published',
             images: [],
-            isRepost: false,
-            primaryId: 0,
-            primaryAuthor: '',
-            likesCount: 0,
-            repostsCount: 0,
-            commentCount: 0,
             type: 'image',
-            reference: '',
-            description: '',
-            title: '',
-            preview: '',
-            content: '',
-            linkVideo: '',
             comments: {
               create: [
                 {
@@ -74,23 +45,8 @@ async function fillDb() {
           {
             image: './images/imageTest2.jpg',
             userId: '11',
-            citation: '',
-            author: '',
-            state: 'published',
             images: [],
-            isRepost: false,
-            primaryId: 0,
-            primaryAuthor: '',
-            likesCount: 0,
-            repostsCount: 0,
-            commentCount: 0,
             type: 'image',
-            reference: '',
-            description: '',
-            title: '',
-            preview: '',
-            content: '',
-            linkVideo: ''
           }
         ]
       }

@@ -1,15 +1,15 @@
+import { Entity } from '@readme/core';
 import {PostInterface, PostState, PostType, CommentInterface, TagsInterface} from '@readme/shared-types';
 
-export class PostEntity implements PostInterface {
-    public id: string;
+export class PostEntity implements  Entity<PostEntity>, PostInterface {
+    public id: number;
     public userId: string;
-    public date: Date;
     public state: PostState;
     public tags: TagsInterface[];
     public comments: CommentInterface[];
     public images: string[];
     public isRepost: boolean;
-    public primaryId: string;
+    public primaryId: number;
     public primaryAuthor: string;
     public likesCount: number;
     public repostsCount: number;
@@ -24,6 +24,8 @@ export class PostEntity implements PostInterface {
     public preview: string;
     public content: string;
     public linkVideo: string;
+    public publishAt: Date;
+    public createdAt: Date;
 
 
     constructor (post: PostInterface){
@@ -33,20 +35,23 @@ export class PostEntity implements PostInterface {
 
 
     public toObject(){
-        return {...this};
+        return {
+            ...this,
+            tags: this.tags.map(({id}) => ({ id })),
+            comments: this.comments.map(({id}) => ({id}))
+        };
     }
 
     public fillEntity(post: PostInterface){
         this.id = post.id;
         this.userId = post.userId;
-        this.date = post.date;
-        this.state = post.state;
-        this.isRepost = post.isRepost;
+        this.state = PostState.Published;
+        this.isRepost = false;
         this.tags = [...post.tags];
         this.comments = [];
-        this.images = post.images;
-        this.primaryId = post.primaryId;
-        this.primaryAuthor = post.primaryAuthor;
+        this.images = [...post.images];
+        this.primaryId = 0;
+        this.primaryAuthor = '';
         this.likesCount = 0;
         this.repostsCount = 0;
         this.commentCount = 0;
@@ -60,6 +65,7 @@ export class PostEntity implements PostInterface {
         this.preview = post.preview;
         this.content = post.content;
         this.linkVideo = post.linkVideo;
-         
+        this.publishAt = new Date();
+        this.createdAt = new Date();
     }
 }

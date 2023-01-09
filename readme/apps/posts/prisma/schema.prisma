@@ -14,7 +14,7 @@ datasource db {
 model Post {
  id             Int @id @default(autoincrement())
  userId         String
- state          String @default("draft")
+ state          PostState @default(Draft)
  title          String? @default("")
  tags           Tag[]
  comments       Comment[]
@@ -25,7 +25,7 @@ model Post {
  likesCount     Int @default(0)
  repostsCount   Int @default(0)
  commentCount   Int @default(0)
- type           String @default("citation")
+ type           PostType @default(citation)
  citation       String? @default("")
  author         String? @default("")
  image          String? @default("")
@@ -52,3 +52,16 @@ model Comment {
   post        Post @relation(fields: [postId], references: [id])
   postId      Int
 }
+
+ enum PostType {
+    video
+    text 
+    citation
+    image
+    reference 
+ }
+
+ enum PostState {
+    Published
+    Draft
+  }

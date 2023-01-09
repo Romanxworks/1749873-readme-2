@@ -4,15 +4,14 @@ import { TagsInterface } from './tags.interface';
 import { CommentInterface } from './comment.interface';
 
 export interface PostInterface{
-    id?: string;
+    id?: number;
     userId: string;
-    date: Date;
     state: PostState;
     tags: TagsInterface[];
     comments: CommentInterface[];
     images: string[];
     isRepost: boolean;
-    primaryId: string;
+    primaryId: number;
     primaryAuthor: string;
     likesCount: number;
     repostsCount: number;
@@ -27,4 +26,6 @@ export interface PostInterface{
     preview: string;
     content: string;
     linkVideo: string;
+    publishAt?: Date;
+    createdAt?: Date;
 }
